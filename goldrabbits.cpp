@@ -13,20 +13,11 @@ long long callsMade = 0;  //keeps track of how many times goldRabbits is called
 
 int goldRabbits(int n){
     static map<int, int> sMap();
-    try{
-        callsMade++;
-        if (n==0 || n==1){
-            return 1;
-        }
-        else if(n < 0){
-            throw callsMade;
-        }
-        else{
-            return goldRabbits(n-1) + goldRabbits(n-2);
-        }
+    if (n==0 || n==1){
+        return 1;
     }
-    catch (int num){
-        cout << Overflow at fibo(num) << endl;
+    else{
+        return goldRabbits(n-1) + goldRabbits(n-2);
     }
 }
 
@@ -39,6 +30,18 @@ int main()
         int current = time(0); // number of seconds since program started
         cout << setw(5)<<current-start<<":"; // print elapsed seconds
         cout << " GoldRabbits("<<setw(2)<<i<<") = ";
-        cout << setw(11)<< goldRabbits(i) <<endl;// the call to goldRabbits
+        cout << setw(11)<< goldRabbits(i) << "\tfiboCount: " << callsMade << endl; // the call to goldRabbits
+
+        // try{
+        //     if(goldRabbits(i) < 0){
+        //         throw callsMade;
+        //     }
+        //     cout << setw(11)<< goldRabbits(i) << "\tfiboCount: " << callsMade << endl; // the call to goldRabbits
+
+        // }
+        // catch (...){
+        //     cout << endl << "Overflow at fibo(" << i << ")" << endl;
+        //     break;
+        // }
     }
 }
