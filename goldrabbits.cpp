@@ -1,3 +1,10 @@
+// Name: Kenton La
+// CECS 325-01
+// Prog 5 - STL (GoldRabbits part 1)
+// Nov 11, 2024
+
+// I certify that this program is my own original work. I did not copy any part of this program from any other source.
+// I further certify that I typed each and every line of code in this program.
 #include <iostream>
 #include <time.h>
 #include <iomanip>
@@ -5,6 +12,7 @@ using namespace std;
 long long callsMade = 0;  //keeps track of how many times goldRabbits is called
 
 int goldRabbits(int n){
+    static map<int, int> sMap();
     try{
         callsMade++;
         if (n==0 || n==1){
