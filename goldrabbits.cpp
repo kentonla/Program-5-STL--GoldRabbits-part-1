@@ -40,18 +40,12 @@ int main()
         int current = time(0); // number of seconds since program started
         cout << setw(5)<<current-start<<":"; // print elapsed seconds
         cout << " GoldRabbits("<<setw(2)<<i<<") = ";
-        cout << setw(11)<< goldRabbits(i) << "\tfiboCount: " << callsMade << endl; // the call to goldRabbits
-
-        // try{
-        //     if(goldRabbits(i) < 0){
-        //         throw callsMade;
-        //     }
-        //     cout << setw(11)<< goldRabbits(i) << "\tfiboCount: " << callsMade << endl; // the call to goldRabbits
-
-        // }
-        // catch (...){
-        //     cout << endl << "Overflow at fibo(" << i << ")" << endl;
-        //     break;
-        // }
+        try{
+            cout << setw(11)<< goldRabbits(i) << "\tfiboCount: " << callsMade << endl; // the call to goldRabbits
+        }
+        catch (...){
+            cout << endl << "Overflow at fibo(" << i << ")" << endl;
+            break;
+        }
     }
 }
