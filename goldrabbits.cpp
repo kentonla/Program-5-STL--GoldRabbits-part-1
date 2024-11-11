@@ -14,6 +14,7 @@ long long callsMade = 0;  //keeps track of how many times goldRabbits is called
 
 int goldRabbits(int n){
     static map<int, int> sMap;
+    // input -1 into goldRabbits prints the Fibo Map
     if(n == -1){
         cout << "Fibo Map" << endl << "--------" << endl;
         for (int i=0; i < sMap.size(); i++){
@@ -21,6 +22,7 @@ int goldRabbits(int n){
         }
         return 0;
     }
+    
     callsMade++;
     if (n==0 || n==1){
         sMap[n] = 1;
