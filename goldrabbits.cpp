@@ -7,17 +7,27 @@
 // I further certify that I typed each and every line of code in this program.
 #include <iostream>
 #include <time.h>
+#include <map>
 #include <iomanip>
 using namespace std;
 long long callsMade = 0;  //keeps track of how many times goldRabbits is called
 
 int goldRabbits(int n){
-    static map<int, int> sMap();
+    static map<int, int> sMap;
+    callsMade++;
     if (n==0 || n==1){
         return 1;
     }
-    else{
-        return goldRabbits(n-1) + goldRabbits(n-2);
+    else if(sMap.find(n) != sMap.end()){ //if we dont get the end value back from find then the value exists in the map
+        return sMap[n];
+    }
+    else{   // value not in map
+        int total = goldRabbits(n-1) + goldRabbits(n-2);
+        if (total < 0){
+            throw overflow_error("Overflow at fibo("+to_string(n)+")");
+        }
+        sMap[n] = total;
+        return sMap[n];
     }
 }
 
